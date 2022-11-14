@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import { Routes, Route, Link, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Auth from './pages/Auth';
+import Dashboard from './pages/Dashboard';
 import './App.css';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Auth />} />
+      <Route
+        path="/dashboard"
+        element={
+          <Protected>
+            <Dashboard />
+          </Protected>
+        }
+      />
+      <Route path="*" element={<NoMatch />} />
+    </Routes>
   );
 }
 
-export default App;
+function Protected({ children }) {
+  const authData = useSelector((state) => state.auth);
+
+  if (!authData.email) {
+    return <Navigate to="/" />;
+  }
+
+  return children;
+}
+
+function NoMatch() {
+  return (
+    <div>
+      <h2>Nothing to see here!</h2>
+      <p>
+        <Link to="/">Go to the home page</Link>
+      </p>
+    </div>
+  );
+}

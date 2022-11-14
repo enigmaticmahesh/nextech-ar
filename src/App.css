@@ -1,38 +1,97 @@
-.App {
-  text-align: center;
+.auth__container {
+  height: 100vh;
+  background-image: linear-gradient(
+    to right top,
+    #7ceaba,
+    #94f0a8,
+    #b2f594,
+    #d4f881,
+    #f9f871
+  );
 }
 
-.App-logo {
-  height: 40vmin;
+.auth__container .card-register {
+  background-color: #7ceaba;
+}
+
+.auth__container label {
+  font-weight: 600;
+}
+
+.auth__container .error__message {
+  color: red;
+  font-weight: 400;
+  margin-top: 5px;
+  border: 1px solid red;
+  border-radius: 15px;
+  padding-inline: 8px;
+  width: fit-content;
+}
+
+.content__wrapper aside {
+  flex: 25%;
+  padding: 1rem;
+  border-right: 1px solid;
+  min-width: 250px;
+  max-width: 250px;
+}
+
+.sidebar__content {
+  cursor: pointer;
+  border: 1px solid;
+  padding-block: 7px;
+  padding-inline: 10px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+}
+
+.active__content {
+  font-weight: 600;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.loader__component {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.users__container,
+.photos__container {
+  padding-block: 1rem;
 }
 
-.App-link {
-  color: #61dafb;
+.users__container th,
+td {
+  white-space: nowrap;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.page__links__container {
+  gap: 1rem;
+}
+
+.pagination li > span {
+  background-color: transparent;
+  border: 2px solid #6dd3d6 !important;
+  border-radius: 20px;
+  color: #6dd3d6 !important;
+  height: 36px;
+  margin: 0 2px;
+  min-width: 36px;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pagination li > span:hover {
+  background-color: #6dd3d6 !important;
+  border-color: #6dd3d6 !important;
+  color: #fff !important;
+}
+
+.pagination li.active > span {
+  pointer-events: none;
+  background-color: #6dd3d6 !important;
+  color: #fff !important;
 }
